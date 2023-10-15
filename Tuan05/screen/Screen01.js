@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
 
-export default function Screen01() {
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, SafeAreaView, Image, Text, Pressable, TextInput, View, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+export default function Screen01(navigation, route) {
+    var image = require("../assets/vs_blue.png");
+
     return (
         <View style={styles.container}>
             <View style={styles.viewTop}>
-                <Image source={require("../assets/vs_blue.png")}
+                <Image source={image}
                     style={styles.imgPhone} />
             </View>
             <View style={styles.viewBody}>
@@ -38,11 +44,15 @@ export default function Screen01() {
                     />
                 </Text>
                 <View style={styles.viewButton}>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.textButton}> 4 MÀU-CHỌN MÀU { }
+                    <TouchableOpacity style={styles.button}
+                        onPress={() =>
+                            navigation.navigate('Screen02')
+                        }>
+                        <Text style={styles.textButton}> 4 MÀU - CHỌN MÀU { }
                             <Image source={require("../assets/Vector.png")} style={styles.imgVector} />
                         </Text>
                     </TouchableOpacity>
+
                 </View>
             </View>
             <View style={styles.viewFooter}>
@@ -52,6 +62,7 @@ export default function Screen01() {
             </View>
         </View>
     );
+
 }
 
 var styles = StyleSheet.create({
